@@ -56,4 +56,22 @@ router.get("/logout", (req, res) => {
   res.json({ message: "You successfully logged out" });
 });
 
+router.put("/change-password/:id", validateToken, async (req, res) => {
+  const { oldPassword, newPassowrd } = req.body;
+  const id = req.params.id;
+  try {
+    const user = await User.findById({ _id: id });
+    const match = await bcrypt.compare(oldPassword, user.password);
+    if (!match) {
+      return res.json({ message: "Entered old password is not valid" });
+    } else {
+      const hash_password = await bcrypt.hash(newPassowrd, 10);
+      await User.findByIdAndUpdate({ _id: id }, { password: hash_password });
+    }
+    res.json({ message: "Password is updated" });
+  } catch (err) {
+    res.json({ message: err.message });
+  }
+});
+
 module.exports = router;
