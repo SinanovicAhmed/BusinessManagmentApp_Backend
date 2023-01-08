@@ -1,14 +1,16 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
-  worker_id: {
+  employee_id: {
     type: mongoose.Schema.Types.ObjectId,
-    required: [true, "Worker id is missing!"],
-    ref: "Worker",
+    required: [true, "Employee id is missing!"],
+    ref: "Employee",
+    unique: true,
   },
   username: {
     type: String,
     required: [true, "Username is missing!"],
+    unique: [true, "Username already exists"],
   },
   password: {
     type: String,
@@ -16,7 +18,7 @@ const userSchema = mongoose.Schema({
   },
   role: {
     type: String,
-    required: [true, "Role id is missing!"],
+    required: [true, "Role is missing!"],
   },
 });
 
