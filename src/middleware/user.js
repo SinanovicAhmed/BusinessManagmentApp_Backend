@@ -26,13 +26,13 @@ exports.loginUser = async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username: username });
 
-  if (!user) return res.json({ message: "User doesn't exist" });
+  if (!user) return res.status(404).json({ message: "User doesn't exist" });
   const match = await bcrypt.compare(password, user.password);
   if (!match) {
-    return res.json({ message: "Invalid password" });
+    return res.status(400).json({ message: "Invalid password" });
   } else {
     const accessToken = jwt.createToken(user);
-    res.cookie("access-token", accessToken, { maxAge: 10000 });
+    res.cookie("access-token", accessToken, { maxAge: 86400000 });
     res.json({ message: "Login successfull" });
   }
 };
