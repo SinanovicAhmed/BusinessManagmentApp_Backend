@@ -11,7 +11,7 @@ const employeeSchema = mongoose.Schema(
       required: [true, "Surname is missing!"],
     },
     contact_num: {
-      type: Number,
+      type: String,
       required: [true, "Number is missing!"],
     },
     adress: {
