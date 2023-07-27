@@ -13,8 +13,7 @@ exports.updateSupplier = async (req, res) => {
   } catch (err) {
     if (err.code === 11000)
       return res.status(409).json({
-        message:
-          "Duplicate value found. Check: suppliers name, email, UID, phone_number.",
+        message: "Duplicate value found. Check: suppliers name, email, UID, phone_number.",
       });
     res.status(400).json({ message: err.message });
   }
@@ -28,8 +27,7 @@ exports.addSupplier = async (req, res) => {
   } catch (err) {
     if (err.code === 11000)
       return res.status(409).json({
-        message:
-          "Duplicate value found. Check: suppliers name, email, UID, phone_number.",
+        message: "Duplicate value found. Check: suppliers name, email, UID, phone_number.",
       });
     res.status(400).json({ message: err.message });
   }
@@ -45,3 +43,5 @@ exports.getSupplierDetails = async (req, res) => {
     res.json({ error: err.message });
   }
 };
+
+exports.getSupplierOrders = async (req, res) => {};
