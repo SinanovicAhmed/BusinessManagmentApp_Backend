@@ -1,11 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {
-  getSuppliers,
-  updateSupplier,
-  addSupplier,
-  getSupplierDetails,
-} = require("../middleware/supplier");
+const { getSuppliers, updateSupplier, addSupplier, getSupplierDetails } = require("../middleware/supplier");
 const jwt = require("../middleware/JWT");
 
 router.get("/get-suppliers", jwt.validateToken, getSuppliers);
