@@ -22,6 +22,12 @@ const orderSchema = mongoose.Schema(
           },
         },
       ],
+      validate: {
+        validator: function (array) {
+          return array.length > 0;
+        },
+        message: "At least one material must be added to order",
+      },
     },
     order_status: {
       type: String,

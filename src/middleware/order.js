@@ -3,9 +3,7 @@ const Material = require("../models/materialModel");
 
 exports.getOrders = async (req, res) => {
   try {
-    const orders = await Order.find()
-      .populate("supplier_id")
-      .populate("ordered_materials.material_id");
+    const orders = await Order.find().populate("supplier_id").populate("ordered_materials.material_id");
 
     res.json({ orders: orders });
   } catch (err) {
@@ -37,12 +35,12 @@ exports.addOrder = async (req, res) => {
 };
 
 exports.finishOrder = async (req, res) => {
-  const orderedMaterials = req.body.ordered_materials;
+  const orderedMaterials = req.body;
   try {
     //check if all materials exist in db
     for (const material of orderedMaterials) {
       const { material_id } = material;
-      const existingMaterial = await Material.findOne({ _id: material_id._id });
+      const existingMaterial = await Material.findOne({ _id: material_id });
 
       if (!existingMaterial) {
         return res.status(404).json({ message: "One or more materials not found." });
@@ -52,7 +50,7 @@ exports.finishOrder = async (req, res) => {
     for (const material of orderedMaterials) {
       const { material_id, quantity } = material;
 
-      const existingMaterial = await Material.findOne({ _id: material_id._id });
+      const existingMaterial = await Material.findOne({ _id: material_id });
       existingMaterial.quantity += quantity;
       await existingMaterial.save();
     }

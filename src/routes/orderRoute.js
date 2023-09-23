@@ -5,7 +5,7 @@ const jwt = require("../middleware/JWT");
 
 router.get("/get-orders", jwt.validateToken, getOrders);
 router.get("/get-order/:id", jwt.validateToken, getOrder);
-router.post("/add-order", jwt.validateToken, addOrder);
+router.post("/add-order", addOrder);
 router.patch("/finish-order", jwt.validateToken, finishOrder);
 router.patch("/update-orderstatus", jwt.validateToken, changeOrderStatus);
 
