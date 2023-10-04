@@ -1,6 +1,7 @@
 const jwt = require("../middleware/JWT");
 const Employee = require("../models/employeeModel");
 const User = require("../models/userModel");
+
 exports.getAllEmployees = async (req, res) => {
   const employees = await Employee.find();
   res.json({ employees });

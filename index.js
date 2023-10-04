@@ -19,6 +19,7 @@ app.use("/api/employee", require("./src/routes/employeeRoutes"));
 app.use("/api/supplier", require("./src/routes/supplierRoutes"));
 app.use("/api/material", require("./src/routes/materialRoutes"));
 app.use("/api/order", require("./src/routes/orderRoute"));
+app.use("/api/product", require("./src/routes/productRoute"));
 app.listen(3000, () => {
   console.log("Server listening on port 3000");
 });
