@@ -20,6 +20,8 @@ app.use("/api/supplier", require("./src/routes/supplierRoutes"));
 app.use("/api/material", require("./src/routes/materialRoutes"));
 app.use("/api/order", require("./src/routes/orderRoute"));
 app.use("/api/product", require("./src/routes/productRoute"));
+app.use("/api/suggestion", require("./src/routes/suggestionRoutes"));
+
 app.listen(3000, () => {
   console.log("Server listening on port 3000");
 });

@@ -16,8 +16,7 @@ exports.registerUser = async (req, res) => {
     });
     res.json({ message: "User added successfully" });
   } catch (err) {
-    if (err.code === 11000)
-      return res.status(400).json({ error: "Username already exists" });
+    if (err.code === 11000) return res.status(400).json({ error: "Username already exists" });
     res.status(400).json({ error: err.message });
   }
 };

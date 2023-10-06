@@ -1,4 +1,3 @@
-const jwt = require("../middleware/JWT");
 const Product = require("../models/productModel");
 const Material = require("../models/materialModel");
 
