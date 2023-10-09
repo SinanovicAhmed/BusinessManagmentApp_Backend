@@ -8,8 +8,8 @@ const {
 } = require("../middleware/suggestion");
 const jwt = require("../middleware/JWT");
 
-router.get("/get-all", getAllSuggestions);
-router.get("/get-suggestion-byID/:id", getSuggestionByID);
-router.post("/add-suggestion", addSuggestion);
-router.delete("/delete-suggestion-byID/:id", deleteSuggestionByID);
+router.get("/get-all", jwt.validateTokenAdmin, getAllSuggestions);
+router.get("/get-suggestion-byID/:id", jwt.validateToken, getSuggestionByID);
+router.post("/add-suggestion", jwt.validateToken, addSuggestion);
+router.delete("/delete-suggestion-byID/:id", jwt.validateToken, deleteSuggestionByID);
 module.exports = router;

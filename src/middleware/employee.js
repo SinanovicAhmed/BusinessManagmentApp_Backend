@@ -1,4 +1,3 @@
-const jwt = require("../middleware/JWT");
 const Employee = require("../models/employeeModel");
 const User = require("../models/userModel");
 

@@ -16,8 +16,7 @@ const createToken = (user) => {
 const validateToken = (req, res, next) => {
   const accessToken = req.cookies["access-token"];
 
-  if (!accessToken)
-    return res.status(400).json({ message: "User not Authenticated" });
+  if (!accessToken) return res.status(400).json({ message: "User not Authenticated" });
 
   try {
     const validToken = verify(accessToken, process.env.TOKEN_SECRET);
@@ -33,9 +32,8 @@ const validateToken = (req, res, next) => {
 const validateTokenAdmin = (req, res, next) => {
   const accessToken = req.cookies["access-token"];
   const user = decode(req.cookies["access-token"]);
-  console.log(req.cookies);
-  if (!accessToken)
-    return res.status(400).json({ message: "User not Authenticated" });
+  console.log(user);
+  if (!accessToken) return res.status(400).json({ message: "User not Authenticated" });
 
   try {
     const validToken = verify(accessToken, process.env.TOKEN_SECRET);
@@ -43,9 +41,7 @@ const validateTokenAdmin = (req, res, next) => {
       req.authenticated = true;
       return next();
     } else {
-      return res
-        .status(403)
-        .json({ message: "You dont have permission for this" });
+      return res.status(403).json({ message: "You dont have permission for this" });
     }
   } catch (err) {
     return res.status(403).json({ message: "Invalid token" });

@@ -2,7 +2,7 @@ const Suggestion = require("../models/suggestionModel");
 
 exports.getAllSuggestions = async (req, res) => {
   try {
-    const suggestions = await Suggestion.find().populate("employee_id");
+    const suggestions = await Suggestion.find().populate("employee");
     res.status(200).json({ suggestions: suggestions });
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -22,7 +22,7 @@ exports.addSuggestion = async (req, res) => {
 exports.getSuggestionByID = async (req, res) => {
   const employee_id = req.params.id;
   try {
-    const suggestions = await Suggestion.find({ employee_id: employee_id }).populate("employee");
+    const suggestions = await Suggestion.find({ employee: employee_id }).populate("employee");
     res.status(200).json({ suggestions });
   } catch (err) {
     res.status(400).json({ message: err.message });

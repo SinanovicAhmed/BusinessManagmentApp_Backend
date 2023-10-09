@@ -45,8 +45,12 @@ exports.userInfo = async (req, res) => {
 };
 
 exports.logoutUser = (req, res) => {
-  res.clearCookie("access-token");
-  res.json({ message: "You successfully logged out" });
+  try {
+    res.clearCookie("access-token");
+    res.status(200).json({ message: "You successfully logged out" });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
 };
 
 exports.changePassword = async (req, res) => {
