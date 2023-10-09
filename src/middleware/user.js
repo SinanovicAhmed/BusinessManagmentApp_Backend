@@ -31,7 +31,7 @@ exports.loginUser = async (req, res) => {
     return res.status(400).json({ message: "Invalid password" });
   } else {
     const accessToken = jwt.createToken(user);
-    res.cookie("access-token", accessToken, { secure: true, sameSite: "none", maxAge: 86400000 });
+    res.cookie("access-token", accessToken, { sameSite: "none", maxAge: 86400000 });
     res.json({ message: "Login successfull", user: { role: user.role } });
   }
 };
