@@ -32,7 +32,7 @@ const validateToken = (req, res, next) => {
 const validateTokenAdmin = (req, res, next) => {
   const accessToken = req.cookies["access-token"];
   const user = decode(req.cookies["access-token"]);
-  console.log(user);
+
   if (!accessToken) return res.status(400).json({ message: "User not Authenticated" });
 
   try {

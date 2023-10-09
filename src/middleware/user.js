@@ -32,7 +32,7 @@ exports.loginUser = async (req, res) => {
   } else {
     const accessToken = jwt.createToken(user);
     res.cookie("access-token", accessToken, { maxAge: 86400000 });
-    res.json({ message: "Login successfull" });
+    res.json({ message: "Login successfull", user: { role: user.role } });
   }
 };
 

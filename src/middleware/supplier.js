@@ -37,7 +37,7 @@ exports.getSupplierDetails = async (req, res) => {
   const supplier_id = req.params.id;
   try {
     const supplier = await Supplier.findById(supplier_id);
-    console.log(supplier);
+
     res.json({ supplier: supplier });
   } catch (err) {
     res.json({ error: err.message });

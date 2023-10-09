@@ -24,7 +24,7 @@ exports.getEmployeeDetails = async (req, res) => {
   try {
     const employee = await Employee.findById(employee_id);
     const user = await User.findOne({ employee_id: employee_id });
-    console.log(employee, user);
+
     res.json({ employee: employee, user: user });
   } catch (err) {
     res.json({ error: err.message });
