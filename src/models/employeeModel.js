@@ -24,13 +24,13 @@ const employeeSchema = mongoose.Schema(
       unique: true,
     },
     employment_date: {
-      type: String,
+      type: Date,
       required: [true, "Employment date is missing!"],
     },
     dismissal_date: {
-      type: String,
+      type: Date,
       required: [false, "Dismissal date is missing!"],
-      default: "",
+      default: new Date("Jan 1, 1970"),
     },
   },
   { versionKey: false }

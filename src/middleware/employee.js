@@ -30,3 +30,19 @@ exports.getEmployeeDetails = async (req, res) => {
     res.json({ error: err.message });
   }
 };
+
+exports.dismissEmployee = async (req, res) => {
+  const employee_id = req.params.id;
+
+  try {
+    const patchDismissalDate = await Employee.findByIdAndUpdate(employee_id, {
+      dismissal_date: new Date(),
+    });
+    const employeeAccount = await User.findOne({ employee_id: employee_id });
+    if (employeeAccount) employeeAccount.remove();
+
+    res.json({ message: "Employee is successfully dismissed!" });
+  } catch (err) {
+    res.json({ message: err.message });
+  }
+};
