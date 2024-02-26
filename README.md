@@ -1,7 +1,7 @@
 ## BMS Backend API Documentation
 
 ### Introduction
-This documentation outlines the API endpoints and functionality provided by the Backend Management System (BMS) backend, built using Express.
+This documentation outlines the API endpoints and functionality provided by the Backend Management System (BMS) backend, built using Express and MongoDB.
 
 ### Authentication
 Authentication is handled using JSON Web Tokens (JWT). Certain routes require authentication with different levels of access (admin vs. regular user).
